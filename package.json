@@ -15,6 +15,7 @@
     "vite-plugin-solid": "^2.2.6"
   },
   "dependencies": {
+    "aws-sdk": "^2.1154.0",
     "solid-js": "^1.4.2"
   }
 }
