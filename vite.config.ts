@@ -7,4 +7,8 @@ export default defineConfig({
     target: 'esnext',
     polyfillDynamicImport: false,
   },
+  define: {
+    'process.env': {},
+    global: {},
+  },
 });
