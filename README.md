@@ -1,34 +1,31 @@
-## Usage
+## RelicGenerator
 
-Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
+原神の聖遺物の管理・構成の提案をサポートするwebアプリです.(制作中)
 
-This is the reason you see a `pnpm-lock.yaml`. That being said, any package manager will work. This file can be safely be removed once you clone a template.
+
+### 開発環境
+
+コンテナを起動すると、 `http://localhost:3000`にページが、`http://localhost:8001`にDBをGUIで操作出来る`Dynamodb-admin`にアクセス出来る.
 
 ```bash
-$ npm install # or pnpm install or yarn install
+# コンテナの生成
+$ docker-compose build
+
+# コンテナの起動
+$ docker-compose up -d
+
+# DBのマイグレーション
+$ bash ./dynamodb-local/generate-dynamodb-table.sh
+
+# 型チェック
+$ docker-compose run app yarn tsc -w
+
+# DBの取り扱い
+$ aws dynamodb HOGEHOGE FUGAFUGA --endpoint-url http://0.0.0.0:8000
 ```
 
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+### 使用技術
 
-## Available Scripts
+`Soild.js`を採用しています. またDBはAWSの`DynamoDB`を採用しています. 
 
-In the project directory, you can run:
-
-### `npm dev` or `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-
-### `npm run build`
-
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-## Deployment
-
-You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
+開発環境では`DynamoDB-local`や`DynamoDB-admin`を採用しています.
