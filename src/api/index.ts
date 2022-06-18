@@ -1,3 +1,3 @@
-import { putRelic } from "./dynamodb";
+import { putRelic, queryRelics } from "./dynamodb";
 
-export { putRelic }
+export { putRelic, queryRelics }
