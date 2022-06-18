@@ -13,6 +13,17 @@
     "format:fix": "prettier --write 'src/**/{*.ts, *.tsx}'",
     "lint-staged": "lint-staged"
   },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint 'src/**/{*.ts, *.tsx}' --fix",
+      "prettier --qrite 'src/**/{*.ts, *.tsx}'"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "license": "MIT",
   "devDependencies": {
     "@typescript-eslint/parser": "^5.28.0",
