@@ -13,6 +13,10 @@ interface Relic {
 }
 
 export const putRelic = async ({ name }: putProps) => {
+    aws.config.update({
+        dynamodb: { endpoint: "http://0.0.0.0:4571" }
+    })
+
     const dynamoClient = new aws.DynamoDB.DocumentClient({
         region: 'ap-northeast-1',
         credentials: { accessKeyId: 'MY_ACCESS_KEY_ID', secretAccessKey: "MY_SECRET_ACCESS_KEY" },
