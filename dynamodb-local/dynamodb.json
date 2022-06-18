@@ -1,22 +1,14 @@
 {
   "AttributeDefinitions": [
     {
-      "AttributeName": "CREATED_AT",
-      "AttributeType": "S"
-    },
-    {
       "AttributeName": "USER_ID",
       "AttributeType": "N"
     }
   ],
   "KeySchema": [
     {
-      "AttributeName": "CREATED_AT",
-      "KeyType": "HASH"
-    },
-    {
       "AttributeName": "USER_ID",
-      "KeyType": "RANGE"
+      "KeyType": "HASH"
     }
   ],
   "ProvisionedThroughput": {
