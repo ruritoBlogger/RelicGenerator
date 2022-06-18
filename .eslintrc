@@ -1,4 +1,5 @@
 {
   "plugins": ["solid"],
-  "extends": ["eslint:recommended", "plugin:solid/recommended"]
+  "extends": ["eslint:recommended", "plugin:solid/recommended"],
+  "parser": "@typescript-eslint/parser"
 }
