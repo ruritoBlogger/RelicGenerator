@@ -1,13 +1,13 @@
 {
   "AttributeDefinitions": [
     {
-      "AttributeName": "USER_ID",
+      "AttributeName": "user_id",
       "AttributeType": "N"
     }
   ],
   "KeySchema": [
     {
-      "AttributeName": "USER_ID",
+      "AttributeName": "user_id",
       "KeyType": "HASH"
     }
   ],
