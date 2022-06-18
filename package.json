@@ -8,7 +8,9 @@
     "build": "vite build",
     "serve": "vite preview",
     "lint": "eslint 'src/**/{*.ts, *.tsx}'",
-    "lint:fix": "eslint 'src/**/{*.ts, *.tsx}' --fix"
+    "lint:fix": "eslint 'src/**/{*.ts, *.tsx}' --fix",
+    "format": "prettier 'src/**/{*.ts, *.tsx}'",
+    "format:fix": "prettier --write 'src/**/{*.ts, *.tsx}'"
   },
   "license": "MIT",
   "devDependencies": {
