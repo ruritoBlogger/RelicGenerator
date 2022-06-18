@@ -4,8 +4,8 @@ import { putRelic } from "./api"
 import logo from './logo.svg';
 import styles from './App.module.css';
 
-const App: () => JSX.Element = () => {
-  createEffect(() => putRelic({ name: 'test' }).then((res) => console.log(res)))
+const App = () => {
+  createEffect(() => putRelic({ name: 'testaaa' }).then((res) => console.log(res)))
 
   return (
     <div class={styles.App}>
