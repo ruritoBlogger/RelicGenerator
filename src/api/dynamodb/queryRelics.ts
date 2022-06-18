@@ -4,14 +4,6 @@ interface queryProps {
     user_id: number
 }
 
-// TODO: domainsなどに切り出す
-// TODO: パラメータに必要な内容を考える(DBの設計しろ)
-interface Relic {
-    id: number
-    user_id: number
-    name: string
-}
-
 export const queryRelics = async ({ user_id }: queryProps) => {
     const dynamoClient = new DynamoDBClient({
         endpoint: "http://localhost:8000",

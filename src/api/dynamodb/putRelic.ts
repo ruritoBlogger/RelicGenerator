@@ -4,14 +4,6 @@ interface putProps {
     name: string
 }
 
-// TODO: domainsなどに切り出す
-// TODO: パラメータに必要な内容を考える(DBの設計しろ)
-interface Relic {
-    id: number
-    user_id: number
-    name: string
-}
-
 export const putRelic = async ({ name }: putProps) => {
     const dynamoClient = new DynamoDBClient({
         endpoint: "http://localhost:8000",
