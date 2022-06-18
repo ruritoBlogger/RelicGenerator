@@ -1,9 +1,12 @@
-import type { Component } from 'solid-js';
+import { Component, createEffect } from 'solid-js';
 
+import { putRelic } from "./api"
 import logo from './logo.svg';
 import styles from './App.module.css';
 
 const App: Component = () => {
+  createEffect(() => putRelic({ name: 'test' }).then((res) => console.log(res)))
+
   return (
     <div class={styles.App}>
       <header class={styles.header}>

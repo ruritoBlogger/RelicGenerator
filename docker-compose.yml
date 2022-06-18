@@ -18,13 +18,11 @@ services:
       - "4566:4566"
       - "4571:4571"
     environment:
-      - SERVICES=apigateway,lambda,dynamodb
+      - SERVICES=dynamodb
       - DEBUG=${DEBUG- }
       - DATA_DIR=${DATA_DIR- }
-      - LAMBDA_EXECUTOR=${LAMBDA_EXECUTOR- }
       - HOST_TMP_FOLDER=${TMPDIR:-/tmp/}localstack
       - DOCKER_HOST=unix:///var/run/docker.sock
-      - LAMBDA_EXECUTOR=docker-reuse
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "./localstack:/localstack"
