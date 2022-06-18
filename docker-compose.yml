@@ -10,19 +10,33 @@ services:
     ports:
       - "3000:3000"
     stdin_open: true
-  localstack:
-    container_name: "${LOCALSTACK_DOCKER_NAME-localstack_main}"
-    image: localstack/localstack:latest
-    network_mode: bridge
-    ports:
-      - "4566:4566"
-      - "4571:4571"
-    environment:
-      - SERVICES=dynamodb
-      - DEBUG=${DEBUG- }
-      - DATA_DIR=${DATA_DIR- }
-      - HOST_TMP_FOLDER=${TMPDIR:-/tmp/}localstack
-      - DOCKER_HOST=unix:///var/run/docker.sock
+  dynamodb-local:
+    container_name: test_dynamodb-local
+    image: amazon/dynamodb-local:latest
+    user: root
+    command: -jar DynamoDBLocal.jar -sharedDb -dbPath /data
     volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-      - "./localstack:/localstack"
+      - dynamodb-local-data:/data
+    ports:
+      - 8000:8000
+    networks:
+      - dynamodb-local-network
+
+  dynamodb-admin:
+    container_name: test_dynamodb-admin
+    image: aaronshaf/dynamodb-admin:latest
+    environment:
+      - DYNAMO_ENDPOINT=dynamodb-local:8000
+    ports:
+      - 8001:8001
+    depends_on:
+      - dynamodb-local
+    networks:
+      - dynamodb-local-network
+
+volumes:
+  dynamodb-local-data:
+
+networks:
+  dynamodb-local-network:
+    driver: bridge
