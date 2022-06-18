@@ -14,21 +14,19 @@ interface Relic {
 
 export const putRelic = async ({ name }: putProps) => {
     aws.config.update({
-        dynamodb: { endpoint: "http://0.0.0.0:4571" }
-    })
-
-    const dynamoClient = new aws.DynamoDB.DocumentClient({
+        dynamodb: { endpoint: `http://localhost:8000` },
         region: 'ap-northeast-1',
-        credentials: { accessKeyId: 'MY_ACCESS_KEY_ID', secretAccessKey: "MY_SECRET_ACCESS_KEY" },
+        credentials: { accessKeyId: 'dummy', secretAccessKey: "dummy" },
     })
+    const dynamoClient = new aws.DynamoDB.DocumentClient()
 
     // TODO: tableをコード側で生成する
     // TODO: テーブル名などを決め打ちしたくない
     return await dynamoClient.put({
         TableName: 'relics',
         Item: {
-            HashKey: Date.now().toString(),
-            user_id: 1,
+            CREATED_AT: Date.now().toString(),
+            USER_ID: 1,
             name,
         }
     }).promise()
