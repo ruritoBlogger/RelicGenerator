@@ -1,6 +1,12 @@
 import { queryRelics } from "@api/dynamodb";
 import { QueryCommandOutput, AttributeValue } from "@aws-sdk/client-dynamodb";
-import { createEffect, createSignal, onCleanup, onMount } from "solid-js";
+import {
+  createEffect,
+  createSignal,
+  onCleanup,
+  onMount,
+  Accessor,
+} from "solid-js";
 
 // TODO: Relicはdomainに置きたい
 //       内容も充実させたい
@@ -20,7 +26,9 @@ const convertToRelics = (output: QueryCommandOutput): Array<Relic> => {
   }
 };
 
-export const useQuery = (user_id: number): (() => Array<Relic>) => {
+type UseQueryResult = [Accessor<Array<Relic>>, () => void];
+
+export const useQuery = (user_id: number): UseQueryResult => {
   const [queryResult, setQueryResult] = createSignal<Array<Relic>>([]);
 
   createEffect(() => {
@@ -31,5 +39,10 @@ export const useQuery = (user_id: number): (() => Array<Relic>) => {
     onCleanup(() => setQueryResult([]));
   });
 
-  return queryResult;
+  const runQuery = async () => {
+    const output = await queryRelics({ user_id });
+    setQueryResult(convertToRelics(output));
+  };
+
+  return [queryResult, runQuery];
 };
