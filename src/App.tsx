@@ -1,10 +1,10 @@
-import { Component, createEffect } from 'solid-js';
+import { Component,createEffect } from 'solid-js';
 
-import { queryRelics } from "./api"
+import { queryRelics } from "./api/dynamodb"
 import logo from './logo.svg';
 import styles from './App.module.css';
 
-const App = () => {
+const App: Component = () => {
   createEffect(() => queryRelics({ user_id: 1 }).then((res) => console.log(res)))
 
   return (
