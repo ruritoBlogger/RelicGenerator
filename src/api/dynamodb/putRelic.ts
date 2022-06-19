@@ -16,8 +16,7 @@ export const putRelic = async ({ name }: putProps) => {
     const command = new PutItemCommand({
         TableName: 'relics',
         Item: {
-            CREATED_AT: { S: Date.now().toString() },
-            USER_ID: { N: "1" },
+            user_id: { N: "1" },
             name: { S: name },
         },
     })
