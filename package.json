@@ -16,7 +16,7 @@
   "lint-staged": {
     "*.{ts,tsx}": [
       "eslint 'src/**/{*.ts, *.tsx}' --fix",
-      "prettier --qrite 'src/**/{*.ts, *.tsx}'"
+      "prettier --write 'src/**/{*.ts, *.tsx}'"
     ]
   },
   "husky": {
