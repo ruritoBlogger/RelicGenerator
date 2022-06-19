@@ -14,10 +14,7 @@ export const queryRelics = async ({ user_id }: queryProps) => {
     // TODO: テーブル名などを決め打ちしたくない
     const command = new QueryCommand({
         TableName: 'relics',
-        KeyConditionExpression: "#user_id = :user_id",
-        ExpressionAttributeNames: {
-            "#user_id": "USER_ID"
-        },
+        KeyConditionExpression: "user_id = :user_id",
         ExpressionAttributeValues: {
             ":user_id": { N: String(user_id) }
         },
