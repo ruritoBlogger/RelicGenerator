@@ -1,5 +1,6 @@
 import { queryRelics } from "@api/dynamodb";
-import { QueryCommandOutput, AttributeValue } from "@aws-sdk/client-dynamodb";
+import { QueryCommandOutput } from "@aws-sdk/client-dynamodb";
+import { Relic, isRelic } from "@domains/relic";
 import {
   createEffect,
   createSignal,
@@ -7,14 +8,6 @@ import {
   onMount,
   Accessor,
 } from "solid-js";
-
-// TODO: Relicはdomainに置きたい
-//       内容も充実させたい
-type Relic = Record<"user_id" | "name", AttributeValue>;
-
-function isRelic(target: Record<string, any>): target is Relic {
-  return target.user_id !== undefined && target.name !== undefined;
-}
 
 // TODO: 別ファイルに切り分けたい
 const convertToRelics = (output: QueryCommandOutput): Array<Relic> => {
