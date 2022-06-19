@@ -1,4 +1,4 @@
-import { putRelic } from "./putRelic"
-import { queryRelics } from "./queryRelics"
+import { putRelic } from "./putRelic";
+import { queryRelics } from "./queryRelics";
 
-export { putRelic, queryRelics }
+export { putRelic, queryRelics };
