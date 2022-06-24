@@ -7,7 +7,7 @@ specifiers:
   eslint-config-prettier: 8.5.0
   eslint-plugin-solid: 0.7.0
   husky: 8.0.1
-  lint-staged: 13.0.2
+  lint-staged: 13.0.3
   prettier: 2.7.1
   solid-js: 1.4.4
   typescript: 4.7.4
@@ -24,7 +24,7 @@ devDependencies:
   eslint-config-prettier: 8.5.0_eslint@8.18.0
   eslint-plugin-solid: 0.7.0_b5e7v2qnwxfo6hmiq56u52mz3e
   husky: 8.0.1
-  lint-staged: 13.0.2
+  lint-staged: 13.0.3
   prettier: 2.7.1
   typescript: 4.7.4
   vite: 2.9.12
@@ -2336,8 +2336,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /lint-staged/13.0.2:
-    resolution: {integrity: sha512-qQLfLTh9z34eMzfEHENC+QBskZfxjomrf+snF3xJ4BzilORbD989NLqQ00ughsF/A+PT41e87+WsMFabf9++pQ==}
+  /lint-staged/13.0.3:
+    resolution: {integrity: sha512-9hmrwSCFroTSYLjflGI8Uk+GWAwMB4OlpU4bMJEAT5d/llQwtYKoim4bLOyLCuWFAhWEupE0vkIFqtw/WIsPug==}
     engines: {node: ^14.13.1 || >=16.0.0}
     hasBin: true
     dependencies:
