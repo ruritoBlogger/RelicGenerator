@@ -38,7 +38,7 @@
     "vite-plugin-solid": "2.2.6"
   },
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "3.113.0",
+    "@aws-sdk/client-dynamodb": "3.118.0",
     "solid-js": "1.4.4"
   }
 }
