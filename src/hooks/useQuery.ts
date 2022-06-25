@@ -10,6 +10,10 @@ import {
 } from "solid-js";
 
 // TODO: 別ファイルに切り分けたい
+/**
+ * DynamoDBのQuery結果から必要な情報(今回だと聖遺物の情報)に変換する
+ * @param output: DynamoDBのQuery結果
+ */
 const convertToRelics = (output: QueryCommandOutput): Array<Relic> => {
   const items = output.Items;
   if (items === undefined) {
@@ -21,6 +25,12 @@ const convertToRelics = (output: QueryCommandOutput): Array<Relic> => {
 
 type UseQueryResult = [Accessor<Array<Relic>>, () => void];
 
+/**
+ * DynamoDBのQueryの実行や実行結果の管理を行うカスタムフック
+ * @param user_id: Queryを行う際に必要となるユーザーID
+ *
+ * @return [Queryの実行結果, Queryの再実行]
+ */
 export const useQuery = (user_id: number): UseQueryResult => {
   const [queryResult, setQueryResult] = createSignal<Array<Relic>>([]);
 
@@ -32,6 +42,9 @@ export const useQuery = (user_id: number): UseQueryResult => {
     onCleanup(() => setQueryResult([]));
   });
 
+  /**
+   * Queryを実行してDynamoDBからデータを取得する
+   */
   const runQuery = async () => {
     const output = await queryRelics({ user_id });
     setQueryResult(convertToRelics(output));
