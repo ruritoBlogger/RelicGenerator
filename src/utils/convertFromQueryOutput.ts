@@ -1,4 +1,5 @@
 import { QueryCommandOutput } from "@aws-sdk/client-dynamodb";
+import { unmarshall } from "@aws-sdk/util-dynamodb";
 import { isRelic, Relic } from "@domains/relic";
 
 /**
@@ -6,10 +7,11 @@ import { isRelic, Relic } from "@domains/relic";
  * @param output: DynamoDBのQuery結果
  */
 export const convertToRelics = (output: QueryCommandOutput): Array<Relic> => {
-  const items = output.Items;
-  if (items === undefined) {
+  const rawItems = output.Items;
+  if (rawItems === undefined) {
     return [];
   } else {
+    const items = rawItems.map((item) => unmarshall(item));
     return items.filter<Relic>((item): item is Relic => isRelic(item));
   }
 };
