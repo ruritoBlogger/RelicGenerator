@@ -1,4 +1,4 @@
-export type relicNames =
+export type RelicNames =
   | "大地を流浪する楽団"
   | "雷を鎮める尊者"
   | "烈火を渡る賢者"
