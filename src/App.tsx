@@ -1,6 +1,6 @@
 import { Component, createEffect } from "solid-js";
 
-import { queryRelics } from "./api/dynamodb";
+import { queryRelics } from "@api/dynamodb";
 import logo from "./logo.svg";
 import styles from "./App.module.css";
 import FixtureDataGenerator from "@components/FixtureDataGenerator";
