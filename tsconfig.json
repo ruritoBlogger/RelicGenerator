@@ -18,7 +18,8 @@
       "@api/*": ["./src/api/*"],
       "@components/*": ["./src/components/*"],
       "@hooks/*": ["./src/hooks/*"],
-      "@domains/*": ["./src/domains/*"]
+      "@domains/*": ["./src/domains/*"],
+      "@utils/*": ["./src/utils/*"]
     }
   }
 }

@@ -1,6 +1,6 @@
 import { queryRelics } from "@api/dynamodb";
-import { QueryCommandOutput } from "@aws-sdk/client-dynamodb";
-import { Relic, isRelic } from "@domains/relic";
+import { Relic } from "@domains/relic";
+import { convertToRelics } from "@utils/convertFromQueryOutput";
 import {
   createEffect,
   createSignal,
@@ -8,20 +8,6 @@ import {
   onMount,
   Accessor,
 } from "solid-js";
-
-// TODO: 別ファイルに切り分けたい
-/**
- * DynamoDBのQuery結果から必要な情報(今回だと聖遺物の情報)に変換する
- * @param output: DynamoDBのQuery結果
- */
-const convertToRelics = (output: QueryCommandOutput): Array<Relic> => {
-  const items = output.Items;
-  if (items === undefined) {
-    return [];
-  } else {
-    return items.filter<Relic>((item): item is Relic => isRelic(item));
-  }
-};
 
 type UseQueryResult = [Accessor<Array<Relic>>, () => void];
 
