@@ -1,7 +1,8 @@
 import type { Relic } from "./relic";
 import { isRelic } from "./relic";
-import type { RelicNames } from "./relicNames";
+import type { RelicName } from "./relicNames";
+import { RelicNames } from "./relicNames";
 import type { subParameter } from "./subParameter";
 
-export type { Relic, RelicNames, subParameter };
-export { isRelic };
+export type { Relic, RelicName, subParameter };
+export { isRelic, RelicNames };
