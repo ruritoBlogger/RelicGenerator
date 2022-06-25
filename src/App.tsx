@@ -1,11 +1,14 @@
-import { Component,createEffect } from 'solid-js';
+import { Component, createEffect } from "solid-js";
 
-import { queryRelics } from "./api/dynamodb"
-import logo from './logo.svg';
-import styles from './App.module.css';
+import { queryRelics } from "./api/dynamodb";
+import logo from "./logo.svg";
+import styles from "./App.module.css";
+import FixtureDataGenerator from "@components/FixtureDataGenerator";
 
 const App: Component = () => {
-  createEffect(() => queryRelics({ user_id: 1 }).then((res) => console.log(res)))
+  createEffect(() =>
+    queryRelics({ user_id: 1 }).then((res) => console.log(res))
+  );
 
   return (
     <div class={styles.App}>
@@ -22,6 +25,7 @@ const App: Component = () => {
         >
           Learn Solid
         </a>
+        <FixtureDataGenerator />
       </header>
     </div>
   );
