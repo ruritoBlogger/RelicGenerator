@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@aws-sdk/client-dynamodb': 3.118.0
+  '@aws-sdk/util-dynamodb': 3.118.0
   '@typescript-eslint/parser': 5.28.0
   eslint: 8.18.0
   eslint-config-prettier: 8.5.0
@@ -19,6 +20,7 @@ dependencies:
   solid-js: 1.4.4
 
 devDependencies:
+  '@aws-sdk/util-dynamodb': 3.118.0
   '@typescript-eslint/parser': 5.28.0_b5e7v2qnwxfo6hmiq56u52mz3e
   eslint: 8.18.0
   eslint-config-prettier: 8.5.0_eslint@8.18.0
@@ -622,6 +624,13 @@ packages:
       '@aws-sdk/types': 3.110.0
       tslib: 2.4.0
     dev: false
+
+  /@aws-sdk/util-dynamodb/3.118.0:
+    resolution: {integrity: sha512-HO2qoORyJCWvqgSZnkGKe/aNnm9bT4ecT2yMHGitSqJ6T4V7EL0SwrlYWcq7dLGnfkAOXimKfTvohk6IRojqtg==}
+    engines: {node: '>= 12.0.0'}
+    dependencies:
+      tslib: 2.4.0
+    dev: true
 
   /@aws-sdk/util-hex-encoding/3.109.0:
     resolution: {integrity: sha512-s8CgTNrn3cLkrdiohfxLuOYPCanzvHn/aH5RW6DaMoeQiG5Hl9QUiP/WtdQ9QQx3xvpQFpmvxIaSBwSgFNLQxA==}
