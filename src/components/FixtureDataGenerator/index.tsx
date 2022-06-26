@@ -5,7 +5,11 @@ import { Component } from "solid-js";
  * TODO: 生成するデータ数とかを呼び出し元で制御出来るようにしたい
  */
 const FixtureDataGenerator: Component = () => {
-  return <p>テストデータ生成するぞおおおおお</p>;
+  const handleClick = () => {
+    console.log("clicked");
+  };
+
+  return <button onClick={handleClick}>テストデータを生成する</button>;
 };
 
 export default FixtureDataGenerator;
