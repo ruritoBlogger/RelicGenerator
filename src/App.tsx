@@ -1,30 +1,43 @@
-import { Component, createEffect } from "solid-js";
+import { Component, createEffect, For } from "solid-js";
+import { createStore } from "solid-js/store";
 
-import { queryRelics } from "@api/dynamodb";
-import logo from "./logo.svg";
+import type { Relic } from "@domains/relic";
+import { useQuery } from "@hooks/useQuery";
 import styles from "./App.module.css";
 import FixtureDataGenerator from "@components/FixtureDataGenerator";
 
 const App: Component = () => {
-  createEffect(() =>
-    queryRelics({ user_id: 1 }).then((res) => console.log(res))
-  );
+  const [queryResult, runQuery] = useQuery(1);
+  const [relics, setRelics] = createStore<Array<Relic>>([]);
 
+  createEffect(() => {
+    const f = async () => {
+      await runQuery();
+      setRelics(queryResult());
+    };
+    f();
+  });
+
+  // TODO: UIを整えたい
   return (
     <div class={styles.App}>
       <header class={styles.header}>
-        <img src={logo} class={styles.logo} alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          class={styles.link}
-          href="https://github.com/solidjs/solid"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Solid
-        </a>
+        <For each={relics} fallback={<div>Loading...</div>}>
+          {(item, index) => (
+            <div>
+              <p>#{index()}</p>
+              <p>{item.name}</p>
+              <p>{item.relicType}</p>
+              <For each={item.subParameters} fallback={<div>Loading...</div>}>
+                {(item) => (
+                  <p>
+                    {item.name}: {item.value}
+                  </p>
+                )}
+              </For>
+            </div>
+          )}
+        </For>
         <FixtureDataGenerator />
       </header>
     </div>
