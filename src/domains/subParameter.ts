@@ -56,14 +56,14 @@ type DamageBuffParameterType = typeof DamageBuffParameters[number];
 export function isSubParameter(target: unknown): target is subParameter {
   return (
     typeof target === "string" &&
-    (target in HPParameters ||
-      target in AttackParameters ||
-      target in DefenseParameters ||
+    (HPParameters.includes(target) ||
+      AttackParameters.includes(target) ||
+      DefenseParameters.includes(target) ||
       target === FamiliarParameter ||
       target === ChargeParameter ||
       target === ConfessionRateParameter ||
       target === ConfessionDamageParameter ||
       target === MedicalParameter ||
-      target in DamageBuffParameters)
+      DamageBuffParameters.includes(target))
   );
 }
