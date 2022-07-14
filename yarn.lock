@@ -1639,10 +1639,10 @@ eslint-config-prettier@8.5.0:
   resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.5.0.tgz#5a81680ec934beca02c7b1a61cf8ca34b66feab1"
   integrity sha512-obmWKLUNCnhtQRKc+tmnYuQl0pFU1ibYJQ5BGhTVB08bHe9wC8qUeG7c08dj9XX+AuPj1YSGSQIHl1pnDHZR0Q==
 
-eslint-plugin-solid@0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-solid/-/eslint-plugin-solid-0.7.0.tgz#8a5fb6950e8969054b0e041c742300d1f7f745ff"
-  integrity sha512-mITYmBMraIWiUEAUR+toMH3Y0t/vThRcyQ7UkJR0zk8S8AIjB2DuWSuUoTm1Xjf0FyB4+xDlr+lttqlQi4xGlA==
+eslint-plugin-solid@0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-solid/-/eslint-plugin-solid-0.7.1.tgz#9e5876e7bf0d43ffb9ef573ff8158ba9e92853e7"
+  integrity sha512-DNxpdvbUcxOhSEGtT1szPQyaPCDL9aZDxBaV9ljccSis0Z2vLgl+KF2KTZZqjyQlyw+6pqe3Yu4e1fezjWV72w==
   dependencies:
     "@typescript-eslint/utils" "^5.10.0"
     is-html "^2.0.0"
