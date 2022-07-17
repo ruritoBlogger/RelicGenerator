@@ -3,6 +3,7 @@ import { subParameter, isSubParameter } from "@domains/subParameter";
 
 // # TODO: RelicTypeに対応する聖遺物の画像を取り扱えるようにする
 export type Relic = {
+  created_at: Date;
   user_id: number;
   name: string;
   // FIXME: ここの命名何とかしたい
@@ -19,11 +20,16 @@ export type Relic = {
  */
 export function isRelic(maybeRelic: Record<string, any>): maybeRelic is Relic {
   return (
+    isDate(maybeRelic.created_at) &&
     isNum(maybeRelic.user_id) &&
     isStr(maybeRelic.name) &&
     hasRelicType(maybeRelic.relicType) &&
     hasSubParameters(maybeRelic.subParameters)
   );
+}
+
+function isDate(target: unknown): target is Date {
+  return target instanceof Date && !Number.isNaN(target.valueOf());
 }
 
 function isNum(target: unknown): target is number {
