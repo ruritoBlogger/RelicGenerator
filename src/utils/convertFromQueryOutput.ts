@@ -12,6 +12,8 @@ export const convertToRelics = (output: QueryCommandOutput): Array<Relic> => {
     return [];
   } else {
     const items = rawItems.map((item) => unmarshall(item));
+    // NOTE: 日付データ(String) -> 日付データ(Date)
+    items.map((item) => ({ ...item, created_at: new Date(item.created_at) }));
     return items.filter<Relic>((item): item is Relic => isRelic(item));
   }
 };
