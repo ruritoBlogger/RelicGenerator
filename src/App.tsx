@@ -3,9 +3,9 @@ import { createStore } from "solid-js/store";
 
 import type { Relic } from "@domains/relic";
 import { useQuery } from "@hooks/useQuery";
-import styles from "./App.module.css";
 import FixtureDataGenerator from "@components/FixtureDataGenerator";
 import { RelicList } from "@components/RelicList";
+import Container from "@suid/material/Container";
 
 const App: Component = () => {
   const [queryResult, runQuery] = useQuery(1);
@@ -21,12 +21,10 @@ const App: Component = () => {
 
   // TODO: UIを整えたい
   return (
-    <div class={styles.App}>
-      <header class={styles.header}>
-        <RelicList relicList={relicList} />
-        <FixtureDataGenerator />
-      </header>
-    </div>
+    <Container>
+      <RelicList relicList={relicList} />
+      <FixtureDataGenerator />
+    </Container>
   );
 };
 
