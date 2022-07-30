@@ -1,21 +1,21 @@
 {
   "AttributeDefinitions": [
     {
-      "AttributeName": "created_at",
-      "AttributeType": "S"
-    },
-    {
       "AttributeName": "user_id",
       "AttributeType": "N"
+    },
+    {
+      "AttributeName": "created_at",
+      "AttributeType": "S"
     }
   ],
   "KeySchema": [
     {
-      "AttributeName": "created_at",
+      "AttributeName": "user_id",
       "KeyType": "HASH"
     },
     {
-      "AttributeName": "user_id",
+      "AttributeName": "created_at",
       "KeyType": "RANGE"
     }
   ],
