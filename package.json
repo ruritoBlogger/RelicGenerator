@@ -42,6 +42,6 @@
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "3.131.0",
-    "solid-js": "1.4.7"
+    "solid-js": "1.4.8"
   }
 }
