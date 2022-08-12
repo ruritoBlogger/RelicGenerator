@@ -1064,10 +1064,10 @@
   dependencies:
     "@suid/utils" "0.3.0"
 
-"@suid/material@^0.4.3":
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/@suid/material/-/material-0.4.3.tgz#86fbf52820cb648b961a33bda2d214721d8acd44"
-  integrity sha512-V56pkG2Kx47Mkjds4la7Dr0oV+B2vVu7Z00t5312HttLD+tb73l5AQjduIPVQUUelSCgqgBC30D6or49SueZrA==
+"@suid/material@0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@suid/material/-/material-0.5.0.tgz#9aa30b2e782bd4b40e2dd9d29b33613e7939ee91"
+  integrity sha512-8prPXDVHmge4VJzhmQbIX2Dfhw2fRb9MNYepwM08MY6WHpUIRw0lJEEAyxXsK/fMGihXEZqXaEeqsWmsiMzEog==
   dependencies:
     "@suid/base" "0.2.5"
     "@suid/css" "0.1.4"
