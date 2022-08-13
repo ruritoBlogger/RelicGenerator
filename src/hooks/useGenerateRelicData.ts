@@ -1,8 +1,7 @@
 import { usePutRelic } from "./usePutRelic";
-import { Accessor } from "solid-js";
 
 type UseGenerateRelicDataResult = {
-  isLoading: Accessor<boolean>;
+  isLoading: boolean;
   generateRelic: () => Promise<void>;
 };
 

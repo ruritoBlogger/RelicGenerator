@@ -1,15 +1,9 @@
-import { queryRelics } from "@api/dynamodb";
+import { queryRelics } from "@db/queryRelics";
 import { Relic } from "@domains/relic";
 import { convertToRelics } from "@utils/convertFromQueryOutput";
-import {
-  createEffect,
-  createSignal,
-  onCleanup,
-  onMount,
-  Accessor,
-} from "solid-js";
+import { useEffect, useState } from "react";
 
-type UseQueryResult = [Accessor<Array<Relic>>, () => void];
+type UseQueryResult = [Array<Relic>, () => void];
 
 /**
  * DynamoDBのQueryの実行や実行結果の管理を行うカスタムフック
@@ -18,15 +12,15 @@ type UseQueryResult = [Accessor<Array<Relic>>, () => void];
  * @return [Queryの実行結果, Queryの再実行]
  */
 export const useQuery = (user_id: number): UseQueryResult => {
-  const [queryResult, setQueryResult] = createSignal<Array<Relic>>([]);
+  const [queryResult, setQueryResult] = useState<Array<Relic>>([]);
 
-  createEffect(() => {
-    onMount(async () => {
+  useEffect(() => {
+    const f = async () => {
       const output = await queryRelics({ user_id });
       setQueryResult(convertToRelics(output));
-    });
-    onCleanup(() => setQueryResult([]));
-  });
+    };
+    f();
+  }, []);
 
   /**
    * Queryを実行してDynamoDBからデータを取得する

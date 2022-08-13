@@ -1,5 +1,5 @@
 import { RelicName, RelicNames } from "@domains/relicNames";
-import { subParameter, isSubParameter } from "@domains/subParameter";
+import { isSubParameter, subParameter } from "@domains/subParameter";
 
 // # TODO: RelicTypeに対応する聖遺物の画像を取り扱えるようにする
 export type Relic = {

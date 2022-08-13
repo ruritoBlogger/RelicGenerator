@@ -1,4 +1,4 @@
-import { subParameter, isSubParameter } from "@domains/subParameter";
+import { isSubParameter, subParameter } from "@domains/subParameter";
 
 /**
  * DynamoDBから取得したサブパラメーターを正しい形式に変換する

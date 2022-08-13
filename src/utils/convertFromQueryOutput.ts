@@ -1,6 +1,7 @@
 import { QueryCommandOutput } from "@aws-sdk/client-dynamodb";
 import { unmarshall } from "@aws-sdk/util-dynamodb";
 import { isRelic, Relic } from "@domains/relic";
+
 import { convertFromDBSubParameters } from "./convertFromDBSubParameters";
 
 /**
@@ -22,7 +23,6 @@ export const convertToRelics = (output: QueryCommandOutput): Array<Relic> => {
       created_at: new Date(item.created_at),
       subParameters: convertFromDBSubParameters(item.subParameters),
     }));
-    console.log(convertedItems);
     return convertedItems.filter<Relic>((item): item is Relic => isRelic(item));
   }
 };

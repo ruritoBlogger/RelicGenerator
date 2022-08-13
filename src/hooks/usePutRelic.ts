@@ -1,14 +1,14 @@
-import { createSignal, Accessor } from "solid-js";
-import { putRelic } from "@api/dynamodb";
+import { putRelic } from "@db/putRelic";
 import { Relic } from "@domains/relic";
+import { useState } from "react";
 
 type UsePutRelicResult = {
-  isLoading: Accessor<boolean>;
+  isLoading: boolean;
   putRelic: (props: Omit<Relic, "created_at" | "user_id">) => Promise<void>;
 };
 
 export const usePutRelic = (): UsePutRelicResult => {
-  const [isLoading, setIsLoading] = createSignal<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const callback = async ({
     name,
