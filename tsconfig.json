@@ -7,19 +7,43 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "jsx": "preserve",
-    "jsxImportSource": "solid-js",
-    "types": [
-      "vite/client"
-    ],
     "noEmit": true,
     "isolatedModules": true,
     "skipLibCheck": true,
+    "baseUrl": ".",
     "paths": {
-      "@api/*": ["./src/api/*"],
-      "@components/*": ["./src/components/*"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@domains/*": ["./src/domains/*"],
-      "@utils/*": ["./src/utils/*"]
-    }
-  }
+      "@db/*": [
+        "./src/db/*"
+      ],
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@domains/*": [
+        "./src/domains/*"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
+      ]
+    },
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true,
+    "resolveJsonModule": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

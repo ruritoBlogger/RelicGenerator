@@ -4,10 +4,9 @@
   "description": "原神の聖遺物の管理・提案を行うサイト",
   "scripts": {
     "prepare": "husky install",
-    "start": "vite",
-    "dev": "vite --host",
-    "build": "vite build",
-    "serve": "vite preview",
+    "dev": "next dev",
+    "build": "next build && next export",
+    "start": "next start",
     "lint": "eslint 'src/**/{*.ts, *.tsx}'",
     "lint:fix": "eslint 'src/**/{*.ts, *.tsx}' --fix",
     "format": "prettier 'src/**/{*.ts, *.tsx}'",
@@ -27,22 +26,25 @@
   "license": "MIT",
   "devDependencies": {
     "@aws-sdk/util-dynamodb": "3.131.0",
+    "@types/node": "^18.7.1",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "5.31.0",
     "@typescript-eslint/parser": "5.31.0",
     "eslint": "8.20.0",
     "eslint-config-prettier": "8.5.0",
-    "eslint-plugin-solid": "0.7.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
     "husky": "8.0.1",
     "lint-staged": "13.0.3",
     "prettier": "2.7.1",
-    "typescript": "4.7.4",
-    "vite": "2.9.14",
-    "vite-plugin-solid": "2.2.6",
-    "vite-tsconfig-paths": "3.5.0"
+    "typescript": "4.7.4"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "3.131.0",
-    "@suid/material": "^0.4.3",
-    "solid-js": "1.4.8"
+    "next": "^12.2.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
