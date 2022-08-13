@@ -1,4 +1,5 @@
 import { useGenerateRelicData } from "@hooks/useGenerateRelicData";
+import { Button } from "@mui/material";
 
 /**
  * DBに検証用の聖遺物データを追加するコンポーネント
@@ -11,9 +12,9 @@ const FixtureDataGenerator = (): JSX.Element => {
   };
 
   return (
-    <button disabled={isLoading} onClick={handleClick}>
+    <Button variant={"outlined"} disabled={isLoading} onClick={handleClick}>
       テストデータを生成する
-    </button>
+    </Button>
   );
 };
 

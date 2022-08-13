@@ -2,6 +2,7 @@ import FixtureDataGenerator from "@components/FixtureDataGenerator";
 import { RelicList } from "@components/RelicList";
 import type { Relic } from "@domains/relic";
 import { useQuery } from "@hooks/useQuery";
+import { Container } from "@mui/material";
 import { NextPage } from "next";
 import { useEffect, useState } from "react";
 
@@ -17,12 +18,11 @@ const App: NextPage = () => {
     f();
   });
 
-  // TODO: UIを整えたい
   return (
-    <div>
+    <Container maxWidth={"lg"}>
       <RelicList relicList={relicList} />
       <FixtureDataGenerator />
-    </div>
+    </Container>
   );
 };
 
