@@ -1,34 +1,26 @@
-import { queryRelics } from "@db/queryRelics";
 import { Relic } from "@domains/relic";
 import { convertToRelics } from "@utils/convertFromQueryOutput";
-import { useEffect, useState } from "react";
+import useSWR from "swr";
 
-type UseQueryResult = [Array<Relic>, () => void];
+interface UseQueryResult {
+  relicList: Array<Relic> | undefined;
+  error: Error | undefined;
+}
 
 /**
  * DynamoDBのQueryの実行や実行結果の管理を行うカスタムフック
- * @param user_id: Queryを行う際に必要となるユーザーID
- *
  * @return [Queryの実行結果, Queryの再実行]
  */
-export const useQuery = (user_id: number): UseQueryResult => {
-  const [queryResult, setQueryResult] = useState<Array<Relic>>([]);
+export const useQuery = (): UseQueryResult => {
+  const fetcher = (url: string): Promise<any> =>
+    fetch(url)
+      .then((res) => res.json())
+      .then((rawData) => convertToRelics(rawData));
 
-  useEffect(() => {
-    const f = async () => {
-      const output = await queryRelics({ user_id });
-      setQueryResult(convertToRelics(output));
-    };
-    f();
-  }, []);
+  const { data, error } = useSWR<Array<Relic>, Error>("/api/relics", fetcher);
 
-  /**
-   * Queryを実行してDynamoDBからデータを取得する
-   */
-  const runQuery = async () => {
-    const output = await queryRelics({ user_id });
-    setQueryResult(convertToRelics(output));
+  return {
+    relicList: data,
+    error: error,
   };
-
-  return [queryResult, runQuery];
 };
