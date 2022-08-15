@@ -1,6 +1,7 @@
 import { shapeSubparameters } from "@domains/relic";
 import { useQuery } from "@hooks/useQuery";
 import {
+  Paper,
   Table,
   TableBody,
   TableCell,
@@ -13,8 +14,8 @@ export const RelicList = (): JSX.Element => {
   const { relicList } = useQuery();
 
   return (
-    <TableContainer>
-      <Table>
+    <TableContainer sx={{ maxHeight: 600 }} component={Paper}>
+      <Table stickyHeader={true}>
         <TableHead>
           <TableRow>
             <TableCell>聖遺物名</TableCell>
