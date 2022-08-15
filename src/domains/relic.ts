@@ -1,5 +1,9 @@
 import { RelicName, RelicNames } from "@domains/relicNames";
-import { isSubParameter, subParameter } from "@domains/subParameter";
+import {
+  convertSubParameterName,
+  isSubParameter,
+  subParameter,
+} from "@domains/subParameter";
 
 // # TODO: RelicTypeに対応する聖遺物の画像を取り扱えるようにする
 export type Relic = {
@@ -82,7 +86,9 @@ export const shapeSubparameters = (
 ): Array<string> => {
   const result: Array<string> = [];
   subParameter.forEach((subParameter) =>
-    result.push(subParameter.name + ": " + subParameter.value)
+    result.push(
+      convertSubParameterName(subParameter.name) + ": " + subParameter.value
+    )
   );
   if (result.length > 3) return result;
   else return [...result, "-"];

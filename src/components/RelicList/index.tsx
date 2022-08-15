@@ -19,20 +19,21 @@ export const RelicList = ({ relicList }: RelicListProps): JSX.Element => {
         <TableHead>
           <TableRow>
             <TableCell>聖遺物名</TableCell>
-            <TableCell>種類</TableCell>
-            <TableCell>サブパラメーター(1)</TableCell>
-            <TableCell>サブパラメーター(2)</TableCell>
-            <TableCell>サブパラメーター(3)</TableCell>
-            <TableCell>サブパラメーター(4)</TableCell>
+            <TableCell align={"right"}>種類</TableCell>
+            <TableCell align={"right"}>サブパラメーター(1)</TableCell>
+            <TableCell align={"right"}>サブパラメーター(2)</TableCell>
+            <TableCell align={"right"}>サブパラメーター(3)</TableCell>
+            <TableCell align={"right"}>サブパラメーター(4)</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {relicList.map((item) => (
             <TableRow key={item.created_at.getTime()}>
               <TableCell>{item.name}</TableCell>
-              <TableCell>{item.relicType}</TableCell>
+              <TableCell align={"right"}>{item.relicType}</TableCell>
               {shapeSubparameters(item.subParameters).map((subParameter) => (
                 <TableCell
+                  align={"right"}
                   key={String(item.created_at.getTime()) + subParameter}
                 >
                   {subParameter}
