@@ -1,5 +1,9 @@
 import { RelicName, RelicNames } from "@domains/relicNames";
-import { isSubParameter, subParameter } from "@domains/subParameter";
+import {
+  convertSubParameterName,
+  isSubParameter,
+  SubParameter,
+} from "@domains/subParameter";
 
 // # TODO: RelicTypeに対応する聖遺物の画像を取り扱えるようにする
 export type Relic = {
@@ -9,7 +13,7 @@ export type Relic = {
   // FIXME: ここの命名何とかしたい
   relicType: RelicName;
   // TODO: ここは配列の長さが必ず3 or 4になるので、その情報も型に入れたい
-  subParameters: Array<{ name: subParameter; value: number }>;
+  subParameters: Array<{ name: SubParameter; value: number }>;
 };
 
 /**
@@ -46,7 +50,7 @@ function hasRelicType(target: unknown): target is RelicName {
 
 function hasSubParameters(
   target: unknown
-): target is Array<{ name: subParameter; value: number }> {
+): target is Array<{ name: SubParameter; value: number }> {
   return (
     Array.isArray(target) && target.every((item) => isSubParameterHash(item))
   );
@@ -54,7 +58,7 @@ function hasSubParameters(
 
 function isSubParameterHash(
   target: unknown
-): target is { name: subParameter; value: number } {
+): target is { name: SubParameter; value: number } {
   // check: target is object
   if (target === null || typeof target !== "object") return false;
 
@@ -69,3 +73,23 @@ function isSubParameterHash(
     return false;
   }
 }
+
+/**
+ * サブパラメーターを文字として出力する
+ * また3つしかサブパラメーターが存在しない場合は4つめとして-を追加する
+ *
+ * ex: ["Hoge: 3.21", "Fuga: 4.59", "Nyan: 11.12", "-"]
+ * @param subParameter
+ */
+export const shapeSubparameters = (
+  subParameter: Array<{ name: SubParameter; value: number }>
+): Array<string> => {
+  const result: Array<string> = [];
+  subParameter.forEach((subParameter) =>
+    result.push(
+      convertSubParameterName(subParameter.name) + ": " + subParameter.value
+    )
+  );
+  if (result.length > 3) return result;
+  else return [...result, "-"];
+};

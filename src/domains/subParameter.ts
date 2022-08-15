@@ -1,4 +1,4 @@
-export type subParameter =
+export type SubParameter =
   | HPParameterType
   | AttackParameterType
   | DefenseParameterType
@@ -8,6 +8,25 @@ export type subParameter =
   | ConfessionDamageParameterType
   | MedicalParameterType
   | DamageBuffParameterType;
+
+export type SubParameterName =
+  | "HP"
+  | "HP(率)"
+  | "攻撃力"
+  | "攻撃力(率)"
+  | "防御力"
+  | "防御力(率)"
+  | "元素熟知"
+  | "元素チャージ効率(率)"
+  | "会心(率)"
+  | "会心ダメージ(率)"
+  | "治癒効果(率)"
+  | "物理ダメージ(率)"
+  | "炎元素ダメージ(率)"
+  | "水元素ダメージ(率)"
+  | "氷元素ダメージ(率)"
+  | "雷元素ダメージ(率)"
+  | "岩元素ダメージ(率)";
 
 // HP, HP(%)
 const HPParameters = ["HP", "HP_rate"];
@@ -53,7 +72,7 @@ const DamageBuffParameters = [
 type DamageBuffParameterType = typeof DamageBuffParameters[number];
 
 // FIXME: つらいやり方をしてしまった
-export function isSubParameter(target: unknown): target is subParameter {
+export function isSubParameter(target: unknown): target is SubParameter {
   return (
     typeof target === "string" &&
     (HPParameters.includes(target) ||
@@ -66,4 +85,55 @@ export function isSubParameter(target: unknown): target is subParameter {
       target === MedicalParameter ||
       DamageBuffParameters.includes(target))
   );
+}
+
+export const subParameterList: Array<SubParameter> = [
+  ...HPParameters,
+  ...AttackParameters,
+  ...DefenseParameters,
+  FamiliarParameter,
+  ChargeParameter,
+  ConfessionRateParameter,
+  ConfessionDamageParameter,
+  MedicalParameter,
+  ...DamageBuffParameters,
+];
+
+export function convertSubParameterName(
+  subParameter: SubParameter
+): SubParameterName | "-" {
+  switch (subParameter) {
+    case "HP":
+      return "HP";
+    case "HP_rate":
+      return "HP(率)";
+    case "Attack":
+      return "攻撃力";
+    case "Attack_rate":
+      return "攻撃力(率)";
+    case "Familiar":
+      return "元素熟知";
+    case "Charge_rate":
+      return "元素チャージ効率(率)";
+    case "Confession_rate":
+      return "会心(率)";
+    case "ConfessionDamage_rate":
+      return "会心ダメージ(率)";
+    case "Medical_rate":
+      return "治癒効果(率)";
+    case "PhysicsDamage_rate":
+      return "物理ダメージ(率)";
+    case "FireDamage_rate":
+      return "炎元素ダメージ(率)";
+    case "WaterDamage_rate":
+      return "水元素ダメージ(率)";
+    case "IceDamage_rate":
+      return "氷元素ダメージ(率)";
+    case "ThunderDamage_rate":
+      return "雷元素ダメージ(率)";
+    case "RockDamage_rate":
+      return "岩元素ダメージ(率)";
+    default:
+      return "-";
+  }
 }

@@ -1,4 +1,4 @@
-import { isSubParameter, subParameter } from "@domains/subParameter";
+import { isSubParameter, SubParameter } from "@domains/subParameter";
 
 /**
  * DynamoDBから取得したサブパラメーターを正しい形式に変換する
@@ -9,7 +9,7 @@ import { isSubParameter, subParameter } from "@domains/subParameter";
  */
 export const convertFromDBSubParameters = (
   output: unknown
-): { name: subParameter; value: number }[] | null => {
+): { name: SubParameter; value: number }[] | null => {
   if (output === null || typeof output !== "object") return null;
   if (!allHaveSubParameterKeys(output)) return null;
 
@@ -25,7 +25,7 @@ export const convertFromDBSubParameters = (
 // TODO: この処理は別で管理したい
 function allHaveSubParameterKeys(
   target: unknown
-): target is { [name: subParameter]: any } {
+): target is { [name: SubParameter]: any } {
   if (target === null || typeof target !== "object") return false;
 
   const keys = Object.keys(target);
