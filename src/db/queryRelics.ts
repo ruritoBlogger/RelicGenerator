@@ -1,16 +1,12 @@
-import { DynamoDBClient, QueryCommand } from "@aws-sdk/client-dynamodb";
+import { QueryCommand } from "@aws-sdk/client-dynamodb";
+
+import { ddbClient } from "./client";
 
 interface queryProps {
   user_id: number;
 }
 
 export const queryRelics = async ({ user_id }: queryProps) => {
-  const dynamoClient = new DynamoDBClient({
-    endpoint: "http://localhost:8000",
-    region: "ap-northeast-1",
-    credentials: { accessKeyId: "dummy", secretAccessKey: "dummy" },
-  });
-
   // TODO: テーブル名などを決め打ちしたくない
   const command = new QueryCommand({
     TableName: "relics",
@@ -20,5 +16,5 @@ export const queryRelics = async ({ user_id }: queryProps) => {
     },
   });
 
-  return await dynamoClient.send(command);
+  return await ddbClient.send(command);
 };

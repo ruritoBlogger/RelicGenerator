@@ -1,17 +1,13 @@
-import { DynamoDBClient, PutItemCommand } from "@aws-sdk/client-dynamodb";
+import { PutItemCommand } from "@aws-sdk/client-dynamodb";
 import { Relic } from "@domains/relic";
+
+import { ddbClient } from "./client";
 
 export const putRelic = async ({
   name,
   relicType,
   subParameters,
 }: Omit<Relic, "created_at" | "user_id">) => {
-  const dynamoClient = new DynamoDBClient({
-    endpoint: "http://localhost:8000",
-    region: "ap-northeast-1",
-    credentials: { accessKeyId: "dummy", secretAccessKey: "dummy" },
-  });
-
   /**
    * 置きたい情報
    * {
@@ -59,5 +55,5 @@ export const putRelic = async ({
     },
   });
 
-  return await dynamoClient.send(command);
+  return await ddbClient.send(command);
 };
