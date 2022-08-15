@@ -1,7 +1,8 @@
 import { DynamoDBClientConfig } from "@aws-sdk/client-dynamodb";
 
 export const config: DynamoDBClientConfig = {
-  endpoint: "http://localhost:8000",
+  // NOTE: SSRしている関係上サーバー側でもクライアント側でも呼び出される
+  endpoint: "http://0.0.0.0:8000",
   region: "ap-northeast-1",
   credentials: {
     accessKeyId: "dummy",
