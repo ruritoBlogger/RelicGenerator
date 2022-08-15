@@ -4,7 +4,7 @@ import useSWR from "swr";
 import { queryFetcher } from "../fetcher";
 
 interface UseQueryResult {
-  relicList: Array<Relic> | undefined;
+  relicList: Array<Relic>;
   error: Error | undefined;
 }
 
@@ -13,10 +13,12 @@ interface UseQueryResult {
  * @return [Queryの実行結果, Queryの再実行]
  */
 export const useQuery = (): UseQueryResult => {
-  const { data, error } = useSWR({ id: 1 }, queryFetcher);
+  const { data, error } = useSWR<Array<Relic>, Error>({ id: 1 }, queryFetcher);
 
   return {
-    relicList: data,
+    // NOTE: suspenseモードで動作させているのでdataには必ずRelic[]が入る
+    //       ただSWR側でsuspenseモードで動作させても型が対応してなさそう
+    relicList: data as Relic[],
     error: error,
   };
 };

@@ -1,4 +1,5 @@
-import { Relic, shapeSubparameters } from "@domains/relic";
+import { shapeSubparameters } from "@domains/relic";
+import { useQuery } from "@hooks/useQuery";
 import {
   Table,
   TableBody,
@@ -8,11 +9,9 @@ import {
   TableRow,
 } from "@mui/material";
 
-interface RelicListProps {
-  relicList: Array<Relic>;
-}
+export const RelicList = (): JSX.Element => {
+  const { relicList } = useQuery();
 
-export const RelicList = ({ relicList }: RelicListProps): JSX.Element => {
   return (
     <TableContainer>
       <Table>
