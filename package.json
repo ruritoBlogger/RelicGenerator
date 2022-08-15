@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "3.145.0",
-    "@aws-sdk/lib-dynamodb": "^3.145.0",
+    "@aws-sdk/lib-dynamodb": "3.145.0",
     "@emotion/react": "11.10.0",
     "@emotion/styled": "11.10.0",
     "@mui/material": "5.10.0",
