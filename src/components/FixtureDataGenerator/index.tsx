@@ -7,6 +7,7 @@ import { Button } from "@mui/material";
  */
 const FixtureDataGenerator = (): JSX.Element => {
   const { isLoading, generateRelic } = useGenerateRelicData();
+
   const handleClick = async () => {
     await generateRelic();
   };

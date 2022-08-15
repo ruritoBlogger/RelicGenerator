@@ -1,3 +1,4 @@
+import { queryRelics } from "@db/queryRelics";
 import { Relic } from "@domains/relic";
 import { convertToRelics } from "@utils/convertFromQueryOutput";
 import useSWR from "swr";
@@ -12,12 +13,10 @@ interface UseQueryResult {
  * @return [Queryの実行結果, Queryの再実行]
  */
 export const useQuery = (): UseQueryResult => {
-  const fetcher = (url: string): Promise<any> =>
-    fetch(url)
-      .then((res) => res.json())
-      .then((rawData) => convertToRelics(rawData));
+  const fetcher = ({ id }: { id: number }) =>
+    queryRelics({ user_id: id }).then((res) => convertToRelics(res));
 
-  const { data, error } = useSWR<Array<Relic>, Error>("/api/relics", fetcher);
+  const { data, error } = useSWR({ id: 1 }, fetcher);
 
   return {
     relicList: data,

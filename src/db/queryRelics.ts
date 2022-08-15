@@ -6,7 +6,7 @@ interface queryProps {
 
 export const queryRelics = async ({ user_id }: queryProps) => {
   const dynamoClient = new DynamoDBClient({
-    endpoint: "http://dynamodb-local:8000",
+    endpoint: "http://localhost:8000",
     region: "ap-northeast-1",
     credentials: { accessKeyId: "dummy", secretAccessKey: "dummy" },
   });

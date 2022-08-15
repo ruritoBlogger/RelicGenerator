@@ -5,7 +5,7 @@ import { Container } from "@mui/material";
 import { NextPage } from "next";
 
 const App: NextPage = () => {
-  const { relicList, error } = useQuery(1);
+  const { relicList, error } = useQuery();
 
   if (relicList === undefined || error !== undefined) {
     return <p>errored!!!</p>;
