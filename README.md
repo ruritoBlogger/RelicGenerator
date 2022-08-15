@@ -17,15 +17,12 @@ $ docker-compose up -d
 # DBのマイグレーション
 $ bash ./dynamodb-local/generate-dynamodb-table.sh
 
-# 型チェック
-$ docker-compose run app yarn tsc -w
-
 # DBの取り扱い
 $ aws dynamodb HOGEHOGE FUGAFUGA --endpoint-url http://0.0.0.0:8000
 ```
 
 ### 使用技術
 
-`Soild.js`を採用しています. またDBはAWSの`DynamoDB`を採用しています. 
+`Next.js`を採用しています. またDBはAWSの`DynamoDB`を採用しています. 
 
 開発環境では`DynamoDB-local`や`DynamoDB-admin`を採用しています.
