@@ -1,6 +1,8 @@
 import { putRelic } from "@db/putRelic";
 import { Relic } from "@domains/relic";
-import { useState } from "react";
+import useSWR from "swr";
+
+import { queryFetcher } from "../fetcher";
 
 type UsePutRelicResult = {
   isLoading: boolean;
@@ -8,24 +10,18 @@ type UsePutRelicResult = {
 };
 
 export const usePutRelic = (): UsePutRelicResult => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const userId = 1;
+  const { mutate, isValidating } = useSWR({ id: userId }, queryFetcher);
 
-  const callback = async ({
-    name,
-    relicType,
-    subParameters,
-  }: Omit<Relic, "created_at" | "user_id">) => {
-    setIsLoading(true);
+  const callback = async (props: Omit<Relic, "created_at" | "user_id">) => {
     await putRelic({
-      name,
-      relicType,
-      subParameters,
+      ...props,
     });
-    setIsLoading(false);
+    await mutate();
   };
 
   return {
-    isLoading: isLoading,
+    isLoading: isValidating,
     putRelic: callback,
   };
 };
