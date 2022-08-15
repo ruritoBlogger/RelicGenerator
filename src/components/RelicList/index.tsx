@@ -28,11 +28,13 @@ export const RelicList = ({ relicList }: RelicListProps): JSX.Element => {
         </TableHead>
         <TableBody>
           {relicList.map((item) => (
-            <TableRow key={item.created_at.getUTCSeconds()}>
+            <TableRow key={item.created_at.getTime()}>
               <TableCell>{item.name}</TableCell>
               <TableCell>{item.relicType}</TableCell>
               {item.subParameters.map((subParameter) => (
-                <TableCell key={subParameter.name}>
+                <TableCell
+                  key={String(item.created_at.getTime()) + subParameter.name}
+                >
                   {subParameter.name}: {subParameter.value}
                 </TableCell>
               ))}
