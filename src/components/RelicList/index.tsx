@@ -1,4 +1,4 @@
-import { Relic } from "@domains/relic";
+import { Relic, shapeSubparameters } from "@domains/relic";
 import {
   Table,
   TableBody,
@@ -31,11 +31,11 @@ export const RelicList = ({ relicList }: RelicListProps): JSX.Element => {
             <TableRow key={item.created_at.getTime()}>
               <TableCell>{item.name}</TableCell>
               <TableCell>{item.relicType}</TableCell>
-              {item.subParameters.map((subParameter) => (
+              {shapeSubparameters(item.subParameters).map((subParameter) => (
                 <TableCell
-                  key={String(item.created_at.getTime()) + subParameter.name}
+                  key={String(item.created_at.getTime()) + subParameter}
                 >
-                  {subParameter.name}: {subParameter.value}
+                  {subParameter}
                 </TableCell>
               ))}
             </TableRow>

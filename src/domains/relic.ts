@@ -69,3 +69,21 @@ function isSubParameterHash(
     return false;
   }
 }
+
+/**
+ * サブパラメーターを文字として出力する
+ * また3つしかサブパラメーターが存在しない場合は4つめとして-を追加する
+ *
+ * ex: ["Hoge: 3.21", "Fuga: 4.59", "Nyan: 11.12", "-"]
+ * @param subParameter
+ */
+export const shapeSubparameters = (
+  subParameter: Array<{ name: subParameter; value: number }>
+): Array<string> => {
+  const result: Array<string> = [];
+  subParameter.forEach((subParameter) =>
+    result.push(subParameter.name + ": " + subParameter.value)
+  );
+  if (result.length > 3) return result;
+  else return [...result, "-"];
+};
