@@ -1,3 +1,6 @@
+import { RelicNames } from "@domains/relicNames";
+import { subParameterList } from "@domains/subParameter";
+
 import { usePutRelic } from "./usePutRelic";
 
 type UseGenerateRelicDataResult = {
@@ -10,20 +13,27 @@ export const useGenerateRelicData = (): UseGenerateRelicDataResult => {
 
   const callback = async () => {
     await putRelic({
-      name: "中々強いやつ",
-      relicType: "逆飛びの流星",
+      name: `ランダム生成_${Math.ceil(Math.random() * 100)}`,
+      relicType: RelicNames[Math.ceil(Math.random() * RelicNames.length)],
       subParameters: [
         {
-          name: "HP_rate",
-          value: 7.8,
+          name: subParameterList[
+            Math.ceil(Math.random() * subParameterList.length)
+          ],
+          // NOTE: 小数点第三位以下で四捨五入
+          value: Math.round(Math.random() * 50 * 1000) / 1000,
         },
         {
-          name: "Attack_rate",
-          value: 17.8,
+          name: subParameterList[
+            Math.ceil(Math.random() * subParameterList.length)
+          ],
+          value: Math.round(Math.random() * 50 * 1000) / 1000,
         },
         {
-          name: "Confession_rate",
-          value: 27.8,
+          name: subParameterList[
+            Math.ceil(Math.random() * subParameterList.length)
+          ],
+          value: Math.round(Math.random() * 50 * 1000) / 1000,
         },
       ],
     });
