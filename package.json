@@ -44,7 +44,7 @@
   "dependencies": {
     "@aws-sdk/client-dynamodb": "3.150.0",
     "@emotion/react": "11.10.0",
-    "@emotion/server": "^11.10.0",
+    "@emotion/server": "11.10.0",
     "@emotion/styled": "11.10.0",
     "@mui/material": "5.10.0",
     "next": "12.2.5",
