@@ -8,11 +8,11 @@
 コンテナを起動すると、 `http://localhost:3000`にページが、`http://localhost:8001`にDBをGUIで操作出来る`Dynamodb-admin`にアクセス出来る.
 
 ```bash
-# コンテナの生成
-$ docker-compose build
+# 開発環境の整備
+$ make build
 
-# コンテナの起動
-$ docker-compose up -d
+# 開発環境の起動
+$ make start
 
 # DBのマイグレーション
 $ bash ./dynamodb-local/generate-dynamodb-table.sh
