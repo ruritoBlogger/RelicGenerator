@@ -1,5 +1,17 @@
 version: '3'
 services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app
+    command: yarn dev
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    networks:
+      - backend-network
   dynamodb-local:
     container_name: test_dynamodb-local
     image: amazon/dynamodb-local:latest
@@ -10,6 +22,7 @@ services:
     ports:
       - 8000:8000
     networks:
+      - backend-network
       - dynamodb-local-network
 
   dynamodb-admin:
@@ -28,5 +41,7 @@ volumes:
   dynamodb-local-data:
 
 networks:
+  backend-network:
+    external: true
   dynamodb-local-network:
     driver: bridge

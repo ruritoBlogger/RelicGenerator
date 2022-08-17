@@ -1,6 +1,6 @@
 import { QueryCommand } from "@aws-sdk/client-dynamodb";
 
-import { ddbClient } from "./client";
+import { ddbClient, ddbServer } from "./client";
 
 interface queryProps {
   user_id: number;
@@ -16,5 +16,9 @@ export const queryRelics = async ({ user_id }: queryProps) => {
     },
   });
 
-  return await ddbClient.send(command);
+  if (typeof window !== "undefined") {
+    return await ddbClient.send(command);
+  } else {
+    return await ddbServer.send(command);
+  }
 };

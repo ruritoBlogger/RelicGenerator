@@ -1,7 +1,7 @@
 import { PutItemCommand } from "@aws-sdk/client-dynamodb";
 import { Relic } from "@domains/relic";
 
-import { ddbClient } from "./client";
+import { ddbClient, ddbServer } from "./client";
 
 export const putRelic = async ({
   name,
@@ -55,5 +55,9 @@ export const putRelic = async ({
     },
   });
 
-  return await ddbClient.send(command);
+  if (typeof window !== "undefined") {
+    return await ddbClient.send(command);
+  } else {
+    return await ddbServer.send(command);
+  }
 };
